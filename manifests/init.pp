@@ -2,10 +2,10 @@
 #
 # Examples
 #
-#   include steam
-class steam {
-  package { 'Steam':
+#   include eclipse
+class eclipse {
+  package { 'eclipse-cpp-luna-R':
     provider => 'appdmg_eula',
-    source   => 'http://media.steampowered.com/client/installer/steam.dmg'
+    source   => 'http://mirrors.xmission.com/eclipse/technology/epp/downloads/release/luna/R/eclipse-cpp-luna-R-macosx-cocoa-x86_64.tar.gz'
   }
 }
