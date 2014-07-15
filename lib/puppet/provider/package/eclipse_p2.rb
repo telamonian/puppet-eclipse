@@ -32,7 +32,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
-    cmd = File.join(@resource[:eclipse_dir], "/eclipse"
+    cmd = File.join(@resource[:eclipse_dir], "/eclipse")
     installedPlugins = %x[#{cmd + "-application org.eclipse.equinox.p2.director -noSplash -listInstalledRoots"}]
     if @resource[:name] = installedPlugins.match(/#{@resource[:name]}/)
       {
