@@ -54,11 +54,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][:eclipse_dir]
     fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][:repo]
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director
-    -repository #{@resource[:install_options][:repo]}
-    -installIU #{@resource[:name]}
-    -tag Add#{@resource[:name]}
-    -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{@resource[:install_options][:repo]} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
     print 'heyho3\n'
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
@@ -85,7 +81,8 @@ private
   end
   
   def eclipse_exec
-    File.join(@resource[:install_options][:eclipse_dir], 'eclipse')
+    "/Applications/eclipse"
+    #File.join(@resource[:install_options][:eclipse_dir], 'eclipse')
   end
 
 end
