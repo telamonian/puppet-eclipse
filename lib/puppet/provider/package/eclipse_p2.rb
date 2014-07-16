@@ -4,9 +4,8 @@ require "puppet/provider/package"
 Puppet::Type.type(:package).provide :eclipse_p2,
 :parent => Puppet::Provider::Package do
   desc "Installs an Eclipse plugin using the Eclipse p2 provisioning app"
-
   confine  :operatingsystem => :darwin
-
+  print 'hey'
   commands :chown => "/usr/sbin/chown"
   commands :curl  => "/usr/bin/curl"
   commands :ditto => "/usr/bin/ditto"
