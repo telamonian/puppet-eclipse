@@ -16,9 +16,9 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def self.instances_by_name
     Dir.entries("/var/db").find_all { |f|
-      f =~ /^\.puppet_eclipse_plugin_installed_/
+      f =~ /^\.puppet_eclipse_p2_installed_/
     }.collect do |f|
-      name = f.sub(/^\.puppet_eclipse_plugin_installed_/, '')
+      name = f.sub(/^\.puppet_eclipse_p2_installed_/, '')
       yield name if block_given?
       name
     end
