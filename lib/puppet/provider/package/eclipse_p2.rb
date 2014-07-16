@@ -7,6 +7,9 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   
   confine  :operatingsystem => :darwin
   
+  has_feature :install_options
+  has_feature :package_settings
+  
   commands :chown => "/usr/sbin/chown"
   commands :curl  => "/usr/bin/curl"
   commands :ditto => "/usr/bin/ditto"
