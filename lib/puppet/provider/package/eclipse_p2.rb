@@ -103,7 +103,7 @@ private
   end
   
   def eclipse_exec
-    "/Applications/eclipse"
+    "/Applications/eclipse/eclipse"
     #File.join(options[:eclipse_dir], 'eclipse')
   end
 
