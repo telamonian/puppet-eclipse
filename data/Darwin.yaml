@@ -3,6 +3,7 @@ eclipse::eclipse_dir: /Applications/eclipse
 eclipse::eclipse_exec_src: http://download.eclipse.org/eclipse/downloads/drops4/R-4.4-201406061215/eclipse-platform-4.4-macosx-cocoa-x86_64.tar.gz
 
 eclipse::plugins::plugin_info:
-  - name: org.eclipse.cdt.feature.group
+  org.eclipse.cdt.feature.group:
+    name: org.eclipse.cdt.feature.group
     repo: http://download.eclipse.org/releases/luna
     eclipse_dir: "%{eclipse::eclipse_dir}"
