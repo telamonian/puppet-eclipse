@@ -92,10 +92,14 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     print @resource[:install_options]
     puts "#{@resource[:install_options]}"
     print "#{@resource[:install_options]}"
-    puts @resource[:source]
-    print @resource[:source]
-    puts "#{@resource[:source]}"
-    print "#{@resource[:source]}"
+    puts @resource[:install_options][0]
+    print @resource[:install_options][0]
+    puts "#{@resource[:install_options][0}"
+    print "#{@resource[:install_options][0}"
+    puts @resource[:install_options][1]
+    print @resource[:install_options][1]
+    puts "#{@resource[:install_options][1}"
+    print "#{@resource[:install_options][1}"
     join_options(@resource[:install_options])
   end
   
