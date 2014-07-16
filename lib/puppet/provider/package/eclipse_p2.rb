@@ -1,6 +1,5 @@
 require "open-uri"
 require "puppet/provider/package"
-require "ruby-debug"
 
 Puppet::Type.type(:package).provide :eclipse_p2,
 :parent => Puppet::Provider::Package do
@@ -53,7 +52,6 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     Puppet.debug("some_debug")
     function_notice(["Desired is: '#{@resource}' "])
     Puppet.debug("")
-    debugger
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][:eclipse_dir]
     fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][:repo]
     
