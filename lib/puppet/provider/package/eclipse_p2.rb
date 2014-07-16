@@ -50,6 +50,11 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     -installIU #{@resource[:name]}
     -tag Add#{@resource[:name]}
     -profile SDKProfile")
+    
+    File.open(receipt_path, "w") do |t|
+      t.print "name: '#{@resource[:name]}'\n"
+      t.print "source: '#{@resource[:source]}'\n"
+    end
   end
 
   def uninstall
@@ -64,6 +69,10 @@ private
 
   def dir_path
     "/Applications/#{@resource[:name]}"
+  end
+  
+  def receipt_path
+      "/var/db/.puppet_compressed_dir_installed_#{@resource[:name]}"
   end
   
   def eclipse_exec

@@ -5,6 +5,7 @@ Puppet::Type.type(:package).provide :compressed_dir,
 :parent => Puppet::Provider::Package do
   desc "Installs a compressed dir. Supports zip, tar.gz, tar.bz2"
 
+#  FLAVORS should be defined in the main compressed_app.rb, in which case the following line will produce a warning
   FLAVORS = %w(zip tgz tar.gz tbz tbz2 tar.bz2)
 
   confine  :operatingsystem => :darwin
@@ -47,21 +48,22 @@ Puppet::Type.type(:package).provide :compressed_dir,
     fail("Unknown flavor #{flavor}") unless FLAVORS.include?(flavor)
     
     FileUtils.mkdir_p '/opt/boxen/cache'
-    curl @resource[:source], "-Lqo", cached_path
+
+    if not File.file?(cached_path)
+      curl @resource[:source], "-Lqo", cached_path
+    end
     rm "-rf", dir_path
     
     FileUtils.mkdir_p dir_path
-    if not File.file?(cached_path)
-      case flavor
-      when 'zip'
-        ditto "-xk", cached_path, "/Applications"
-      when 'tar.gz', 'tgz'
-        tar "-zxf", cached_path, "-C", dir_path, "--strip-components", "1"
-      when 'tar.bz2', 'tbz', 'tbz2'
-        tar "-jxf", cached_path, "-C", dir_path, "--strip-components", "1"
-      else
-        fail "Can't decompress flavor #{flavor}"
-      end
+    case flavor
+    when 'zip'
+      ditto "-xk", cached_path, "/Applications"
+    when 'tar.gz', 'tgz'
+      tar "-zxf", cached_path, "-C", dir_path, "--strip-components", "1"
+    when 'tar.bz2', 'tbz', 'tbz2'
+      tar "-jxf", cached_path, "-C", dir_path, "--strip-components", "1"
+    else
+      fail "Can't decompress flavor #{flavor}"
     end
 
     chown "-R", "#{Facter[:boxen_user].value}:staff", dir_path
