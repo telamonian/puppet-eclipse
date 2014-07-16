@@ -6,7 +6,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   desc "Installs an Eclipse plugin using the Eclipse p2 provisioning app"
   
   confine  :operatingsystem => :darwin
-  debug("other_some_debug")
+  
   commands :chown => "/usr/sbin/chown"
   commands :curl  => "/usr/bin/curl"
   commands :ditto => "/usr/bin/ditto"
@@ -66,6 +66,8 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def uninstall
+    options = install_options
+    
     system(eclipse_exec + " -application org.eclipse.equinox.p2.director
     -repository #{options[:repo]}
     -uninstallIU #{@resource[:name]}
@@ -74,8 +76,16 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def install_options
-      join_options(@resource[:install_options])
-    end
+    puts @resource[:name]
+    print @resource[:name]
+    puts "#{@resource[:name]}"
+    print "#{@resource[:name]}"
+    puts @resource[:install_options]
+    print @resource[:install_options]
+    puts "#{@resource[:install_options]}"
+    print "#{@resource[:install_options]}"
+    join_options(@resource[:install_options])
+  end
   
   def join_options(options)
     return unless options
