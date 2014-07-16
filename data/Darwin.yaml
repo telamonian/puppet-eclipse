@@ -5,4 +5,4 @@ eclipse::eclipse_exec_src: http://download.eclipse.org/eclipse/downloads/drops4/
 eclipse::plugins::plugin_info:
   - name: org.eclipse.cdt.feature.group
     repo: http://download.eclipse.org/releases/luna
-    eclipse_dir: %{eclipse::eclipse_dir}
+    eclipse_dir: "%{eclipse::eclipse_dir}"
