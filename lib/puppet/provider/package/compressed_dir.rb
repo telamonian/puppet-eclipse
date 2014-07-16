@@ -55,7 +55,6 @@ Puppet::Type.type(:package).provide :compressed_dir,
     rm "-rf", dir_path
     
     FileUtils.mkdir_p dir_path
-    print flavor
     case flavor
     when 'zip'
       ditto "-xk", cached_path, "/Applications"
