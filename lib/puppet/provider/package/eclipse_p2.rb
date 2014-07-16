@@ -41,6 +41,12 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def install
+    File.open("/Users/telv/ruby.log", 'w') do |t|
+      t.print "name: '#{@resource[:name]}'\n"
+      t.print "source: '#{@resource[:install_options][:repo]}'\n"
+      t.print "install options hash: '#{@resource[:install_options]}'\n"
+      t.print "whole hash: '#{@resource}'\n"
+    end
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
     info("some_info")
     debug("some_debug")
@@ -56,7 +62,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     print 'heyho3\n'
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{@resource[:repo]}'\n"
+      t.print "source: '#{@resource[:install_options][:repo]}'\n"
     end
   end
 
