@@ -42,7 +42,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def install
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
-    info("some_info)"
+    info("some_info")
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][:eclipse_dir]
     fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][:repo]
     debug("some_debug")
