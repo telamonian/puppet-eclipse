@@ -7,7 +7,6 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   
   confine  :operatingsystem => :darwin
   
-  has_feature :install_options
   has_feature :package_settings
   
   commands :chown => "/usr/sbin/chown"
@@ -44,82 +43,35 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def install
-    options = install_options
-    
     File.open("/Users/telv/ruby.log", 'w') do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{options[:repo]}'\n"
-      t.print "install options hash: '#{options}'\n"
+      t.print "source: '#{@resource[:package_settings][:repo]}'\n"
+      t.print "install options hash: '#{@resource[:package_settings]}'\n"
       t.print "whole hash: '#{@resource}'\n"
     end
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
     info("some_info")
-    Puppet.debug("#{options}")
+    Puppet.debug("#{@resource[:package_settings]}")
     function_notice(["Desired is: '#{@resource}' "])
-    debug("#{options}")
-    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless options[:eclipse_dir]
-    fail("Eclipse plugins must specify a repository url") unless options[:repo]
+    debug("#{@resource[:package_settings]}")
+    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:package_settings][:eclipse_dir]
+    fail("Eclipse plugins must specify a repository url") unless @resource[:package_settings][:repo]
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{options[:repo]} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{@resource[:package_settings][:repo]} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
     print 'heyho3\n'
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{options[:repo]}'\n"
+      t.print "source: '#{@resource[:package_settings][:repo]}'\n"
     end
   end
 
   def uninstall
-    options = install_options
-    
     system(eclipse_exec + " -application org.eclipse.equinox.p2.director
-    -repository #{options[:repo]}
+    -repository #{@resource[:package_settings][:repo]}
     -uninstallIU #{@resource[:name]}
     -tag Add#{@resource[:name]}
     -profile SDKProfile")
   end
-
-  def install_options
-    puts @resource[:install_options]
-    puts "#{@resource[:install_options]}"
-    puts @resource[:package_settings]
-    puts "#{@resource[:package_settings]}"
-    join_options(@resource[:install_options])
-  end
-
-def collect_options(options)
-  return unless options
-
-  newOpts = Hash.new
-
-  options.each do |val|
-    case val
-    when Hash
-      val.keys.each do |key|
-        puts key
-        newOpts[key] = val[key]
-      end
-    else
-      newOpts[val] = val
-    end
-  end
-
-  symbolizehash(newOpts)
-end
-  
-#  def join_options(options)
-#    return unless options
-#
-#    options.collect do |val|
-#      case val
-#        when Hash
-#          val.keys.sort.collect do |k|
-#            "#{k}=#{val[k]}"
-#          end
-#        else
-#          val
-#      end
-#    end.flatten
-#  end
   
 private
 
@@ -133,7 +85,7 @@ private
   
   def eclipse_exec
     "/Applications/eclipse/eclipse"
-    #File.join(options[:eclipse_dir], 'eclipse')
+    #File.join(@resource[:package_settings][:eclipse_dir], 'eclipse')
   end
 
 end
