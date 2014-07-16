@@ -80,6 +80,10 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     print @resource[:name]
     puts "#{@resource[:name]}"
     print "#{@resource[:name]}"
+    puts @resource
+    print @resource
+    puts "#{@resource}"
+    print "#{@resource}"
     puts @resource[:install_options]
     print @resource[:install_options]
     puts "#{@resource[:install_options]}"
