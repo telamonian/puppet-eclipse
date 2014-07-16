@@ -92,31 +92,43 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     print @resource[:install_options]
     puts "#{@resource[:install_options]}"
     print "#{@resource[:install_options]}"
-    puts @resource[:install_options][0]
-    print @resource[:install_options][0]
-    puts "#{@resource[:install_options][0}"
-    print "#{@resource[:install_options][0}"
-    puts @resource[:install_options][1]
-    print @resource[:install_options][1]
-    puts "#{@resource[:install_options][1}"
-    print "#{@resource[:install_options][1}"
     join_options(@resource[:install_options])
   end
-  
-  def join_options(options)
-    return unless options
 
-    options.collect do |val|
-      case val
-        when Hash
-          val.keys.sort.collect do |k|
-            "#{k}=#{val[k]}"
-          end
-        else
-          val
+def collect_options(options)
+  return unless options
+
+  newOpts = Hash.new
+
+  options.each do |val|
+    case val
+    when Hash
+      val.keys.each do |key|
+        puts key
+        newOpts[key] = val[key]
       end
-    end.flatten
+    else
+      newOpts[val] = val
+    end
   end
+
+  symbolizehash(newOpts)
+end
+  
+#  def join_options(options)
+#    return unless options
+#
+#    options.collect do |val|
+#      case val
+#        when Hash
+#          val.keys.sort.collect do |k|
+#            "#{k}=#{val[k]}"
+#          end
+#        else
+#          val
+#      end
+#    end.flatten
+#  end
   
 private
 
