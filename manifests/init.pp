@@ -8,13 +8,18 @@ class eclipse ($eclipse_dir='eclipse', $eclipse_exec_src='http://download.eclips
   
   property_list_key {'hashtest':
 	  ensure     => present,
-	  path       => '/Library/Java/JavaVirtualMachines/jdk1.7.jdk/Contents/Info.plist',
+	  path       => '/Library/Java/JavaVirtualMachines/jdk1.7.0_55.jdk/Contents/Info.plist',
 	  key        => 'JavaVM',
 	  value      => { 'JVMCapabilities' => ['JNI',
                                           'BundledApp',
 									                        'WebStart',
 									                        'Applets',
-									                        'CommandLine']},
+									                        'CommandLine'],
+										'JVMMinimumFrameworkVersion' => '13.2.9',
+										'JVMMinimumSystemVersion' => '10.6.0',
+										'JVMPlatformVersion' => '1.7',
+										'JVMVendor' => 'Oracle Corporation',
+										'JVMVersion' => '1.7.0_55'},
 	  value_type => 'hash'
   }
   

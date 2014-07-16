@@ -41,36 +41,57 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def install
+    options = install_options
+    
     File.open("/Users/telv/ruby.log", 'w') do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{@resource[:install_options][:repo]}'\n"
-      t.print "install options hash: '#{@resource[:install_options]}'\n"
+      t.print "source: '#{options[:repo]}'\n"
+      t.print "install options hash: '#{options}'\n"
       t.print "whole hash: '#{@resource}'\n"
     end
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
     info("some_info")
-    Puppet.debug("some_debug")
+    Puppet.debug("#{options}")
     function_notice(["Desired is: '#{@resource}' "])
-    Puppet.debug("")
-    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][:eclipse_dir]
-    fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][:repo]
+    debug("#{options}")
+    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless options[:eclipse_dir]
+    fail("Eclipse plugins must specify a repository url") unless options[:repo]
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{@resource[:install_options][:repo]} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{options[:repo]} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
     print 'heyho3\n'
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{@resource[:install_options][:repo]}'\n"
+      t.print "source: '#{options[:repo]}'\n"
     end
   end
 
   def uninstall
     system(eclipse_exec + " -application org.eclipse.equinox.p2.director
-    -repository #{@resource[:install_options][:repo]}
+    -repository #{options[:repo]}
     -uninstallIU #{@resource[:name]}
     -tag Add#{@resource[:name]}
     -profile SDKProfile")
   end
 
+  def install_options
+      join_options(resource[:install_options])
+    end
+  
+  def join_options(options)
+    return unless options
+
+    options.collect do |val|
+      case val
+        when Hash
+          val.keys.sort.collect do |k|
+            "#{k}=#{val[k]}"
+          end
+        else
+          val
+      end
+    end.flatten
+  end
+  
 private
 
   def dir_path
@@ -83,7 +104,7 @@ private
   
   def eclipse_exec
     "/Applications/eclipse"
-    #File.join(@resource[:install_options][:eclipse_dir], 'eclipse')
+    #File.join(options[:eclipse_dir], 'eclipse')
   end
 
 end
