@@ -3,11 +3,12 @@
 # Examples
 #
 #   include eclipse::plugin
-define eclipse::plugin ($name, $repo, $eclipse_dir='eclipse') {
+define eclipse::plugin ($name, $repo, $eclipse_dir) {
   require eclipse
   package {$name:
     name => $name,
     provider => 'eclipse_p2',
-    install_options => {'eclipse_dir' => $eclipse_dir, 'repo' => $repo}
+    source => $repo,
+    install_options => [{'eclipse_dir' => $eclipse_dir}, {'repo' => $repo}]
   }
 }
