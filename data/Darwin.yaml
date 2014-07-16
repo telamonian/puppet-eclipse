@@ -1,0 +1,7 @@
+---
+eclipse::eclipse_dir: '/Applications/eclipse'
+
+eclipse::plugin_info:
+  -name: org.eclipse.cdt.feature.group
+  -repo: http://download.eclipse.org/releases/luna
+  -eclipse_dir: %{eclipse::eclipse_dir}

@@ -10,7 +10,6 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   commands :chown => "/usr/sbin/chown"
   commands :curl  => "/usr/bin/curl"
   commands :ditto => "/usr/bin/ditto"
-  commands :eclipse => File.join(@resource[:eclipse_dir], "/eclipse")
   commands :mv    => "/bin/mv"
   commands :rm    => "/bin/rm"
   commands :tar   => "/usr/bin/tar"
@@ -32,8 +31,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
-    cmd = File.join(@resource[:eclipse_dir], "/eclipse")
-    installedPlugins = %x[#{cmd + "-application org.eclipse.equinox.p2.director -noSplash -listInstalledRoots"}]
+    installedPlugins = %x{#{eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -listInstalledRoots"}}
     if @resource[:name] = installedPlugins.match(/#{@resource[:name]}/)
       {
         :name   => @resource[:name],
@@ -44,28 +42,32 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def install
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
-    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:eclipse_dir]
-    fail("Eclipse plugins must specify a repository url") unless @resource[:repo]
+    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][:eclipse_dir]
+    fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][:repo]
     
-    eclipse "-application org.eclipse.equinox.p2.director
-    -repository #{@resource[:repo]}
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director
+    -repository #{@resource[:install_options][:repo]}
     -installIU #{@resource[:name]}
     -tag Add#{@resource[:name]}
-    -profile SDKProfile"
+    -profile SDKProfile")
   end
 
   def uninstall
-    eclipse "-application org.eclipse.equinox.p2.director
-    -repository #{@resource[:repo]}
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director
+    -repository #{@resource[:install_options][:repo]}
     -uninstallIU #{@resource[:name]}
     -tag Add#{@resource[:name]}
-    -profile SDKProfile"
+    -profile SDKProfile")
   end
 
 private
 
   def dir_path
     "/Applications/#{@resource[:name]}"
+  end
+  
+  def eclipse_exec
+    File.join(@resource[:install_options][:eclipse_dir], 'eclipse')
   end
 
 end
