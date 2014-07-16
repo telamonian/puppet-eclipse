@@ -74,7 +74,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def install_options
-      join_options(resource[:install_options])
+      join_options(@resource[:install_options])
     end
   
   def join_options(options)
