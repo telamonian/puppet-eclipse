@@ -80,7 +80,7 @@ private
   
   def eclipse_exec
     #"/Applications/eclipse/eclipse"
-    File.join(dir_path, 'eclipse')
+    File.join('#{dir_path}', 'eclipse')
   end
   
   def receipt_path
