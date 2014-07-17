@@ -10,6 +10,8 @@ Puppet::Type.type(:package).provide :compressed_dir,
 
   confine  :operatingsystem => :darwin
 
+  has_feature :install_options
+  
   commands :chown => "/usr/sbin/chown"
   commands :curl  => "/usr/bin/curl"
   commands :ditto => "/usr/bin/ditto"

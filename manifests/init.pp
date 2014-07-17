@@ -3,7 +3,7 @@
 # Examples
 #
 #   include eclipse
-class eclipse ($eclipse_dir='eclipse', $eclipse_exec_src='http://download.eclipse.org/eclipse/downloads/drops4/R-4.4-201406061215/eclipse-platform-4.4-macosx-cocoa-x86_64.tar.gz') {
+class eclipse ($eclipse_dir, $eclipse_exec_src) {
   require java
   
   property_list_key {'hashtest':
@@ -23,7 +23,7 @@ class eclipse ($eclipse_dir='eclipse', $eclipse_exec_src='http://download.eclips
 	  value_type => 'hash'
   }
   
-  package {'eclipse':
+  package {$eclipse_dir:
     provider => 'compressed_dir',
     install_options => [{'eclipse_dir' => $eclipse_dir }],
     source   => $eclipse_exec_src
