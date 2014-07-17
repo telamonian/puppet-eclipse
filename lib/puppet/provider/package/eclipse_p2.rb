@@ -33,6 +33,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
+    puts @resource[:package_settings]
     if File.exists?(receipt_path)
       {
         :name   => @resource[:name],
@@ -58,7 +59,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:package_settings]['eclipse_dir']
     fail("Eclipse plugins must specify a repository url") unless @resource[:package_settings]['repo']
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{@resource[:package_settings]['repo']} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:package_settings]['repo']} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
       t.print "source: '#{@resource[:package_settings]['repo']}'\n"
@@ -66,11 +67,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def uninstall
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director
-    -repository #{@resource[:package_settings]['repo']}
-    -uninstallIU #{@resource[:name]}
-    -tag Add#{@resource[:name]}
-    -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:package_settings]['repo']} -uninstallIU #{@resource[:name]} -tag Add#{@resource[:name]} -profile SDKProfile")
   end
   
 private
