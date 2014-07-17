@@ -33,6 +33,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
+    puts @resource[:package_settings]
     if File.exists?(receipt_path)
       {
         :name   => @resource[:name],
@@ -54,6 +55,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 #  end
 
   def install
+    puts @resource[:package_settings]
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:package_settings][:eclipse_dir]
     fail("Eclipse plugins must specify a repository url") unless @resource[:package_settings][:repo]

@@ -9,7 +9,6 @@ define eclipse::plugin ($name, $repo, $eclipse_dir) {
     name => $name,
     provider => 'eclipse_p2',
     source => $repo,
-    install_options => [{'eclipse_dir' => $eclipse_dir}, {'repo' => $repo}],
     package_settings => {'eclipse_dir' => $eclipse_dir, 'repo' => $repo}
   }
 }
