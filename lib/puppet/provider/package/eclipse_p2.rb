@@ -73,14 +73,10 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
   
 private
-
-  def dir_path
-    File.join('/Applications', @resource[:install_options]['eclipse_dir'])
-  end
   
   def eclipse_exec
     #"/Applications/eclipse/eclipse"
-    File.join("#{dir_path}", 'eclipse')
+    File.join("/Applications", @resource[:install_options]['eclipse_dir'], "eclipse")
   end
   
   def receipt_path
