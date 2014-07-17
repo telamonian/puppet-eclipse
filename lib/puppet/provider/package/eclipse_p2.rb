@@ -35,7 +35,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   def query
     #puts "eclipse_exec_#{eclipse_exec}"
     print @resource[:name]
-    print @resource[:install_options]
+    print @resource[:install_options][0]
     print @resource[:install_options][0]['eclipse_dir']
     if File.exists?(receipt_path)
       {
@@ -58,22 +58,22 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 #  end
 
   def install
-    eclipse_exec = File.join("/Applications", @resource[:install_options]['eclipse_dir'], "eclipse")
+    eclipse_exec = File.join("/Applications", @resource[:install_options][0]['eclipse_dir'], "eclipse")
     puts eclipse_exec
-    fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:install_options]['plugin_name']
-    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options]['eclipse_dir']
-    fail("Eclipse plugins must specify a repository url") unless @resource[:install_options]['repo']
+    fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:install_options][0]['plugin_name']
+    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][0]['eclipse_dir']
+    fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][0]['repo']
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options]['repo']} -installIU #{@resource[:install_options]['plugin_name']} -tag Add#{@resource[:install_options]['plugin_name']}   -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options][0]['repo']} -installIU #{@resource[:install_options][0]['plugin_name']} -tag Add#{@resource[:install_options][0]['plugin_name']}   -profile SDKProfile")
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{@resource[:install_options]['repo']}'\n"
+      t.print "source: '#{@resource[:install_options][0]['repo']}'\n"
     end
   end
 
   def uninstall
-    eclipse_exec = File.join("/Applications", @resource[:install_options]['eclipse_dir'], "eclipse")
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options]['repo']} -uninstallIU #{@resource[:install_options]['plugin_name']} -tag Add#{@resource[:install_options]['plugin_name']} -profile SDKProfile")
+    eclipse_exec = File.join("/Applications", @resource[:install_options][0]['eclipse_dir'], "eclipse")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options][0]['repo']} -uninstallIU #{@resource[:install_options][0]['plugin_name']} -tag Add#{@resource[:install_options][0]['plugin_name']} -profile SDKProfile")
   end
   
 private
