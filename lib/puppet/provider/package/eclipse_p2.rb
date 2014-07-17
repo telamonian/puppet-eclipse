@@ -33,32 +33,32 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
-    installedPlugins = %x{#{eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -listInstalledRoots"}}
-    if @resource[:name] == installedPlugins.match(/#{@resource[:name]}/)
+    if File.exists?(receipt_path)
       {
         :name   => @resource[:name],
         :ensure => :installed
       }
     end
-  end
+  end  
+
+#This version of the query function probably isn't right
+#  def query
+#    installedPlugins = %x{#{eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -listInstalledRoots"}}
+#    puts installedPlugins
+#    if @resource[:name] == installedPlugins.match(/#{@resource[:name]}/)
+#      {
+#        :name   => @resource[:name],
+#        :ensure => :installed
+#      }
+#    end
+#  end
 
   def install
-    File.open("/Users/telv/ruby.log", 'w') do |t|
-      t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{@resource[:package_settings][:repo]}'\n"
-      t.print "install options hash: '#{@resource[:package_settings]}'\n"
-      t.print "whole hash: '#{@resource}'\n"
-    end
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
-    info("some_info")
-    Puppet.debug("#{@resource[:package_settings]}")
-    function_notice(["Desired is: '#{@resource}' "])
-    debug("#{@resource[:package_settings]}")
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:package_settings][:eclipse_dir]
     fail("Eclipse plugins must specify a repository url") unless @resource[:package_settings][:repo]
     
     system(eclipse_exec + " -application org.eclipse.equinox.p2.director -repository #{@resource[:package_settings][:repo]} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
-    print 'heyho3\n'
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
       t.print "source: '#{@resource[:package_settings][:repo]}'\n"
@@ -76,7 +76,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 private
 
   def dir_path
-    "/Applications/#{@resource[:name]}"
+    @resource[:package_settings][:eclipse_dir]
   end
   
   def receipt_path
@@ -84,8 +84,8 @@ private
   end
   
   def eclipse_exec
-    "/Applications/eclipse/eclipse"
-    #File.join(@resource[:package_settings][:eclipse_dir], 'eclipse')
+    #"/Applications/eclipse/eclipse"
+    File.join(@resource[:package_settings][:eclipse_dir], 'eclipse')
   end
 
 end
