@@ -34,9 +34,9 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def query
     #puts "eclipse_exec_#{eclipse_exec}"
-    puts @resource[:name]
-    puts @resource[:install_options]
-    puts @resource[:install_options]['eclipse_dir']
+    print @resource[:name]
+    print @resource[:install_options]
+    print @resource[:install_options][0]['eclipse_dir']
     if File.exists?(receipt_path)
       {
         :name   => @resource[:name],
