@@ -33,7 +33,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
-    puts "eclipse_exec_#{eclipse_exec}"
+    #puts "eclipse_exec_#{eclipse_exec}"
     puts @resource[:name]
     puts @resource[:install_options]
     if File.exists?(receipt_path)
