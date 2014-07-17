@@ -7,7 +7,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   
   confine  :operatingsystem => :darwin
   
-  has_feature :package_settings
+  has_feature :install_options
   
   commands :chown => "/usr/sbin/chown"
   commands :curl  => "/usr/bin/curl"
@@ -33,7 +33,7 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
-    puts @resource[:package_settings]
+    puts @resource[:install_options]
     if File.exists?(receipt_path)
       {
         :name   => @resource[:name],
@@ -56,24 +56,24 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def install
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:name]
-    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:package_settings]['eclipse_dir']
-    fail("Eclipse plugins must specify a repository url") unless @resource[:package_settings]['repo']
+    fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options]['eclipse_dir']
+    fail("Eclipse plugins must specify a repository url") unless @resource[:install_options]['repo']
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:package_settings]['repo']} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options]['repo']} -installIU #{@resource[:name]} -tag Add#{@resource[:name]}   -profile SDKProfile")
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
-      t.print "source: '#{@resource[:package_settings]['repo']}'\n"
+      t.print "source: '#{@resource[:install_options]['repo']}'\n"
     end
   end
 
   def uninstall
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:package_settings]['repo']} -uninstallIU #{@resource[:name]} -tag Add#{@resource[:name]} -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options]['repo']} -uninstallIU #{@resource[:name]} -tag Add#{@resource[:name]} -profile SDKProfile")
   end
   
 private
 
   def dir_path
-    @resource[:package_settings]['eclipse_dir']
+    @resource[:install_options]['eclipse_dir']
   end
   
   def receipt_path
@@ -82,7 +82,7 @@ private
   
   def eclipse_exec
     #"/Applications/eclipse/eclipse"
-    File.join(@resource[:package_settings]['eclipse_dir'], 'eclipse')
+    File.join(@resource[:install_options]['eclipse_dir'], 'eclipse')
   end
 
 end
