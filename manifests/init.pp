@@ -28,4 +28,6 @@ class eclipse ($eclipse_dir, $eclipse_exec_src) {
     install_options => [{'eclipse_dir' => $eclipse_dir }],
     source   => $eclipse_exec_src
   }
+  
+  create_resources(eclipse::plugin, hiera('eclipse::cplugins::workspace_mechanic_info'))
 }
