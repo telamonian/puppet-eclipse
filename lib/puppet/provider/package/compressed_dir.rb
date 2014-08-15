@@ -5,20 +5,27 @@ Puppet::Type.type(:package).provide :compressed_dir,
 :parent => Puppet::Provider::Package do
   desc "Installs a compressed dir. Supports zip, tar.gz, tar.bz2"
 
-#  FLAVORS should be defined in the main compressed_app.rb, in which case the following line will produce a warning
+#  FLAVORS should be defined already in the vanilla boxen provider compressed_app.rb, in which case the following line will produce a warning
   FLAVORS = %w(zip tgz tar.gz tbz tbz2 tar.bz2)
 
-  confine  :operatingsystem => :darwin
-
   has_feature :install_options
-  
-  commands :chown => "/usr/sbin/chown"
-  commands :curl  => "/usr/bin/curl"
-  commands :ditto => "/usr/bin/ditto"
-  commands :mv    => "/bin/mv"
-  commands :rm    => "/bin/rm"
-  commands :tar   => "/usr/bin/tar"
 
+  if RUBY_PLATFORM =~ /darwin/
+    commands :chown => "/usr/sbin/chown"
+    commands :curl  => "/usr/bin/curl"
+  #  commands :ditto => "/usr/bin/ditto"
+    commands :mv    => "/bin/mv"
+    commands :rm    => "/bin/rm"
+    commands :tar   => "/usr/bin/tar"
+  elsif RUBY_PLATFORM =~ /linux/
+    commands :chown => "/bin/chown"
+    commands :curl  => "/usr/bin/curl"
+  #  commands :ditto => "/usr/bin/ditto"
+    commands :mv    => "/bin/mv"
+    commands :rm    => "/bin/rm"
+    commands :tar   => "/bin/tar"
+  end
+  
   def self.instances_by_name
     Dir.entries("/var/db").find_all { |f|
       f =~ /^\.puppet_compressed_dir_installed_/
@@ -45,21 +52,26 @@ Puppet::Type.type(:package).provide :compressed_dir,
   end
 
   def install
-    fail("OS X compressed dirs must specify a package name") unless @resource[:name]
-    fail("OS X compressed dirs must specify a package source") unless @resource[:source]
+    fail("Compressed dirs must specify a package name") unless @resource[:name]
+    fail("Compressed dirs must specify a package source") unless @resource[:source]
     fail("Unknown flavor #{flavor}") unless FLAVORS.include?(flavor)
     
     FileUtils.mkdir_p '/opt/boxen/cache'
 
-    if not File.file?(cached_path)
-      curl @resource[:source], "-Lqo", cached_path
-    end
+    %x("/usr/bin/curl -o #{cached_path} -C - -k -L -s --url #{@resource[:source]}")
+#    curl "-o", cached_path, "-C", "-", "-k", "-L", "-s", "--url", @resource[:source]
+#    print @resource[:source]
+#    print "-Lqo"
+#    print cached_path
+    #curl @resource[:source],"-C", "-", "-Lqo", cached_path
+      
     rm "-rf", dir_path
     
     FileUtils.mkdir_p dir_path
     case flavor
-    when 'zip'
-      ditto "-xk", cached_path, "/Applications"
+    # for now, this provider can't deal with files compressed with PKZip (.zip files), as there is no ditto on linux systems
+    # when 'zip'
+    #  ditto "-xk", cached_path, "/Applications"
     when 'tar.gz', 'tgz'
       tar "-zxf", cached_path, "-C", dir_path, "--strip-components", "1"
     when 'tar.bz2', 'tbz', 'tbz2'
@@ -68,7 +80,7 @@ Puppet::Type.type(:package).provide :compressed_dir,
       fail "Can't decompress flavor #{flavor}"
     end
 
-    chown "-R", "#{Facter[:boxen_user].value}:staff", dir_path
+    chown "-R", "#{Facter[:boxen_user].value}:#{Facter[:boxen_group].value}", dir_path
 
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"

@@ -17,6 +17,7 @@ GEM
       puppet-lint (~> 0.3)
       puppetlabs_spec_helper (~> 0.4)
       rspec-puppet (~> 1.0)
+    deep_merge (1.0.1)
     diff-lcs (1.2.5)
     facter (2.0.1)
       CFPropertyList (~> 2.2.6)
@@ -72,3 +73,4 @@ PLATFORMS
 
 DEPENDENCIES
   cardboard (~> 2.1)
+  deep_merge (~> 1.0)

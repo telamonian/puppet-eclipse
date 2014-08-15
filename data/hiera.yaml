@@ -1,5 +1,10 @@
 ---
+:backends:
+  - yaml
+:yaml:
+  :datadir: "%{::boxen_home}/repo/shared/eclipse/data"
 :hierarchy:
+  - "users/%{github_login}"
   - "%{::osfamily}/%{::macosx_productversion_major}"
   - "%{::osfamily}/%{::lsbdistcodename}"
   - "%{::osfamily}"

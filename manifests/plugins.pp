@@ -3,8 +3,8 @@
 # Examples
 #
 #   include eclipse::plugins
-class eclipse::plugins ($plugin_info) {
-  require eclipse
+class eclipse::plugins ($plugin_info, $eclipse_dir) {
+  include eclipse
 #  debug($plugin_info)
   create_resources(eclipse::plugin, $plugin_info)
 }

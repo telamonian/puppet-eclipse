@@ -5,17 +5,22 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 :parent => Puppet::Provider::Package do
   desc "Installs an Eclipse plugin using the Eclipse p2 provisioning app"
   
-  confine  :operatingsystem => :darwin
-  
   has_feature :install_options
   
-  commands :chown => "/usr/sbin/chown"
-  commands :curl  => "/usr/bin/curl"
-  commands :ditto => "/usr/bin/ditto"
-  commands :mv    => "/bin/mv"
-  commands :rm    => "/bin/rm"
-  commands :tar   => "/usr/bin/tar"
-
+#  if RUBY_PLATFORM =~ /darwin/
+#    commands :chown => "/usr/sbin/chown"
+#    commands :curl  => "/usr/bin/curl"
+#    commands :mv    => "/bin/mv"
+#    commands :rm    => "/bin/rm"
+#    commands :tar   => "/usr/bin/tar"
+#  elsif RUBY_PLATFORM =~ /linux/
+#    commands :chown => "/bin/chown"
+#    commands :curl  => "/usr/bin/curl"
+#    commands :mv    => "/bin/mv"
+#    commands :rm    => "/bin/rm"
+#    commands :tar   => "/bin/tar"
+#  end
+  
   def self.instances_by_name
     Dir.entries("/var/db").find_all { |f|
       f =~ /^\.puppet_eclipse_p2_installed_/
@@ -45,7 +50,8 @@ Puppet::Type.type(:package).provide :eclipse_p2,
     end
   end  
 
-#This version of the query function probably isn't right
+# This version of the query function uses eclipse p2 to check installed plugins
+# It's probably better to use the above query function, which is more similar to the function in the other Boxen package providers
 #  def query
 #    installedPlugins = %x{#{eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -listInstalledRoots"}}
 #    puts installedPlugins
@@ -59,12 +65,12 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def install
     eclipse_exec = File.join("/Applications", @resource[:install_options][0]['eclipse_dir'], "eclipse")
-    puts eclipse_exec
+#    puts eclipse_exec
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:install_options][0]['plugin_name']
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][0]['eclipse_dir']
     fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][0]['repo']
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options][0]['repo']} -installIU #{@resource[:install_options][0]['plugin_name']} -tag Add#{@resource[:install_options][0]['plugin_name']}   -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{repo} -installIU #{IU} -tag installed_#{IU} -profile SDKProfile")
     File.open(receipt_path, "w") do |t|
       t.print "name: '#{@resource[:name]}'\n"
       t.print "source: '#{@resource[:install_options][0]['repo']}'\n"
@@ -73,13 +79,22 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 
   def uninstall
     eclipse_exec = File.join("/Applications", @resource[:install_options][0]['eclipse_dir'], "eclipse")
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{@resource[:install_options][0]['repo']} -uninstallIU #{@resource[:install_options][0]['plugin_name']} -tag Add#{@resource[:install_options][0]['plugin_name']} -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{repo} -uninstallIU #{IU} -tag removed_#{IU} -profile SDKProfile")
   end
   
 private
   
   def receipt_path
-    "/var/db/.puppet_compressed_dir_installed_#{@resource[:name]}"
+    "/var/db/.puppet_eclipse_p2__installed_#{@resource[:name]}"
+  end
+  
+  def repo
+    @resource[:install_options][0]['repo']
+  end
+  
+  # IU (installable unit) is eclipse-speak for the fully qualified name of the plugin
+  def IU
+    @resource[:install_options][0]['plugin_name']
   end
 
 end
