@@ -1,0 +1,13 @@
+---
+#eclipse_default_install:
+#  eclipse_default_info:
+#    eclipse_app_src: http://download.eclipse.org/eclipse/downloads/drops4/R-4.4-201406061215/eclipse-platform-4.4-linux-gtk-x86_64.tar.gz
+    
+site_users:
+  jen:
+    uid: 503
+    shell: /bin/zsh
+    group: deglitch
+  bob:
+    uid: 1000
+    group: deglitch
