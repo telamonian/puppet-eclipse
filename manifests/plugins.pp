@@ -4,7 +4,5 @@
 #
 #   include eclipse::plugins
 class eclipse::plugins ($plugin_info, $eclipse_dir) {
-  include eclipse
-#  debug($plugin_info)
-  create_resources(eclipse::plugin, $plugin_info)
+  create_resources(eclipse::plugin, $plugin_info, {eclipse_dir => $eclipse_dir})
 }

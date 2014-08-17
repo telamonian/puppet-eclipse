@@ -45,7 +45,7 @@ Puppet::Type.type(:package).provide :compressed_dir,
   def query
     if File.exists?(receipt_path)
       {
-        :name   => @resource[:name],
+        :name   => merged_name,
         :ensure => :installed
       }
     end
@@ -58,7 +58,7 @@ Puppet::Type.type(:package).provide :compressed_dir,
     
     FileUtils.mkdir_p '/opt/boxen/cache'
 
-    %x("/usr/bin/curl -o #{cached_path} -C - -k -L -s --url #{@resource[:source]}")
+    %x(/usr/bin/curl -o #{cached_path} -C - -k -L -s --url #{@resource[:source]})
 #    curl "-o", cached_path, "-C", "-", "-k", "-L", "-s", "--url", @resource[:source]
 #    print @resource[:source]
 #    print "-Lqo"
@@ -69,7 +69,7 @@ Puppet::Type.type(:package).provide :compressed_dir,
     
     FileUtils.mkdir_p dir_path
     case flavor
-    # for now, this provider can't deal with files compressed with PKZip (.zip files), as there is no ditto on linux systems
+    # TODO: for now, this provider can't deal with files compressed with PKZip (.zip files), as there is no ditto on linux systems
     # when 'zip'
     #  ditto "-xk", cached_path, "/Applications"
     when 'tar.gz', 'tgz'
@@ -83,7 +83,7 @@ Puppet::Type.type(:package).provide :compressed_dir,
     chown "-R", "#{Facter[:boxen_user].value}:#{Facter[:boxen_group].value}", dir_path
 
     File.open(receipt_path, "w") do |t|
-      t.print "name: '#{@resource[:name]}'\n"
+      t.print "name: '#{merged_name}'\n"
       t.print "source: '#{@resource[:source]}'\n"
     end
   end
@@ -98,17 +98,25 @@ private
   def flavor
     @resource[:flavor] || @resource[:source].match(/\.(#{FLAVORS.join('|')})$/i){|m| m[1] }
   end
-
-  def dir_path
-    "/Applications/#{@resource[:name]}"
+  
+  def merged_name
+    @resource[:name][0]=='/' ? @resource[:name].gsub('/','_')[1..-1] : @resource[:name].gsub('/','_')
   end
-
+  
+  def dir_path
+    @resource[:name]
+  end
+  
+  def cached_name
+    File.split(@resource[:source])[1].split('.')[0]
+  end
+  
   def cached_path
-    "/opt/boxen/cache/#{@resource[:name]}.#{flavor}"
+    "/opt/boxen/cache/#{cached_name}.#{flavor}"
   end
 
   def receipt_path
-    "/var/db/.puppet_compressed_dir_installed_#{@resource[:name]}"
+    "/var/db/.puppet_compressed_dir_installed_#{merged_name}"
   end
 
 end

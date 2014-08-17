@@ -5,10 +5,8 @@
 #   include eclipse
 class eclipse () {
   # sadly, we can't use parameters and automatic lookup with these hiera supplied variables, as the deep_merge stuff doesn't work correctly when hiera is called like that
-  $eclipse_default_install = hiera_hash('eclipse_default_install')
-  $eclipse_installs = hiera_hash('eclipse_installs', undef)
-  $site_users = hiera_hash('site_users')
-  $testy_test = hiera_hash('top_site_users')
+  $eclipse_default_install = hiera_hash('eclipse::eclipse_default_install')
+  $eclipse_installs = hiera_hash('eclipse::eclipse_installs', undef)
   require java
   
   if $osfamily=='Darwin' {
@@ -31,11 +29,9 @@ class eclipse () {
   }
   
   if $eclipse_installs != undef {
+    create_resources(eclipse::install, $eclipse_installs)
   }
   else {
-    info($site_users)
-    info($testy_test)
-    info($eclipse_default_install)
     create_resources(eclipse::install, $eclipse_default_install)
   }
   

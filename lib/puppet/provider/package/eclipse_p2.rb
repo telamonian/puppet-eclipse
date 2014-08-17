@@ -38,13 +38,9 @@ Puppet::Type.type(:package).provide :eclipse_p2,
   end
 
   def query
-    #puts "eclipse_exec_#{eclipse_exec}"
-    print @resource[:name]
-    print @resource[:install_options][0]
-    print @resource[:install_options][0]['eclipse_dir']
     if File.exists?(receipt_path)
       {
-        :name   => @resource[:name],
+        :name   => merged_name,
         :ensure => :installed
       }
     end
@@ -64,37 +60,50 @@ Puppet::Type.type(:package).provide :eclipse_p2,
 #  end
 
   def install
-    eclipse_exec = File.join("/Applications", @resource[:install_options][0]['eclipse_dir'], "eclipse")
-#    puts eclipse_exec
     fail("Eclipse plugins must specify a plugin name (ie org.eclipse.sdk.ide)") unless @resource[:install_options][0]['plugin_name']
     fail("Eclipse plugins must specify the absolute path of an eclipse installation dir") unless @resource[:install_options][0]['eclipse_dir']
     fail("Eclipse plugins must specify a repository url") unless @resource[:install_options][0]['repo']
     
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{repo} -installIU #{IU} -tag installed_#{IU} -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{repo} -installIU #{eclipse_iu} -tag installed_#{eclipse_iu} -profile SDKProfile")
     File.open(receipt_path, "w") do |t|
-      t.print "name: '#{@resource[:name]}'\n"
+      t.print "name: '#{merged_name}'\n"
       t.print "source: '#{@resource[:install_options][0]['repo']}'\n"
     end
   end
 
   def uninstall
-    eclipse_exec = File.join("/Applications", @resource[:install_options][0]['eclipse_dir'], "eclipse")
-    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{repo} -uninstallIU #{IU} -tag removed_#{IU} -profile SDKProfile")
+    system(eclipse_exec + " -application org.eclipse.equinox.p2.director -noSplash -repository #{repo} -uninstallIU #{eclipse_iu} -tag removed_#{eclipse_iu} -profile SDKProfile")
   end
   
 private
   
   def receipt_path
-    "/var/db/.puppet_eclipse_p2__installed_#{@resource[:name]}"
+    "/var/db/.puppet_eclipse_p2__installed_#{merged_name}"
+  end
+  
+  def eclipse_dir
+    @resource[:install_options][0]['eclipse_dir']
+  end
+  
+  def merged_eclipse_dir
+    eclipse_dir[0]=='/' ? eclipse_dir.gsub('/','_')[1..-1] : eclipse_dir.gsub('/','_')
+  end
+  
+  def eclipse_exec
+    File.join(@resource[:install_options][0]['eclipse_dir'], "eclipse")
+  end
+  
+  # eclipse_iu (installable unit) is eclipse-speak for the fully qualified name of the plugin
+  def eclipse_iu
+    @resource[:install_options][0]['plugin_name']
+  end
+  
+  def merged_name
+    [eclipse_iu, merged_eclipse_dir].join('_')
   end
   
   def repo
     @resource[:install_options][0]['repo']
-  end
-  
-  # IU (installable unit) is eclipse-speak for the fully qualified name of the plugin
-  def IU
-    @resource[:install_options][0]['plugin_name']
   end
 
 end

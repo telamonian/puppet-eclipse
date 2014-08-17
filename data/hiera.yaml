@@ -9,5 +9,5 @@
   - "%{::osfamily}/%{::lsbdistcodename}"
   - "%{::osfamily}"
   - common
-
+  
 :merge_behavior: deeper
