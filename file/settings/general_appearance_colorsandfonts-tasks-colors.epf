@@ -1,0 +1,18 @@
+# @title general_appearance_colorsandfonts-tasks-colors
+# @description general appearance colorsandfonts-tasks-colors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.task.active=36,22,50
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.incoming.background=225,236,255
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.category.gradient.end=220,220,220
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.category.gradient.start=240,240,240
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.completed=128,128,128
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.today.completed=107,169,128
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.past.due=198,4,38
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.overdue.for.others=128,0,0
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.past.scheduled=32,21,223
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.thisweek.scheduled=0,0,0
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.colors.foreground.today.scheduled=32,21,223
+file_export_version=3.0

@@ -1,0 +1,67 @@
+# @title c_editor_syntaxcoloring
+# @description c_editor_syntaxcoloring
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Dec 14 17:29:05 EST 2014
+/instance/org.eclipse.cdt.core/indexer/indexAllVersionsSpecificHeaders=
+/instance/org.eclipse.cdt.core/indexer/skipFilesLargerThanMB=8
+/instance/org.eclipse.cdt.core/indexer/updatePolicy=0
+/instance/org.eclipse.cdt.ui/c_operators_bold=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.enumerator.color=239,192,144
+/instance/org.eclipse.cdt.ui/semanticHighlighting.localVariableDeclaration.color=190,214,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.externalSDK.color=190,214,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.staticMethod.color=190,214,255
+file_export_version=3.0
+/instance/org.eclipse.cdt.ui/pp_directive=255,255,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.macroDefinition.bold=true
+/instance/org.eclipse.cdt.ui/c_multi_line_comment=199,221,12
+/instance/org.eclipse.cdt.core/indexer/skipImplicitReferences=false
+/instance/org.eclipse.cdt.ui/c_string=255,198,0
+/instance/org.eclipse.cdt.ui/asm_label=248,225,170
+/instance/org.eclipse.cdt.ui/c_type=255,255,255
+/instance/org.eclipse.cdt.core/indexer/useHeuristicIncludeResolution=true
+/instance/org.eclipse.cdt.ui/pp_default=248,225,170
+/instance/org.eclipse.cdt.core/indexer/skipTypeReferences=false
+/instance/org.eclipse.cdt.ui/c_operators=140,133,177
+/instance/org.eclipse.cdt.core/indexer/indexOnOpen=false
+/instance/org.eclipse.cdt.ui/semanticHighlighting.field.color=190,214,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.namespace.color=209,151,217
+/instance/org.eclipse.cdt.ui/c_numbers=127,179,71
+/instance/org.eclipse.cdt.ui/c_comment_task_tag=204,223,50
+/instance/org.eclipse.cdt.ui/semanticHighlighting.function.color=255,255,255
+/instance/org.eclipse.cdt.ui/c_keyword=255,255,255
+/instance/org.eclipse.cdt.core/indexer/indexAllHeaderVersions=false
+/instance/org.eclipse.cdt.ui/semanticHighlighting.enum.color=127,179,71
+/instance/org.eclipse.cdt.ui/sourceHoverBackgroundColor=32,32,32
+/instance/org.eclipse.cdt.ui/semanticHighlighting.typedef.color=210,82,82
+/instance/org.eclipse.cdt.ui/org.eclipse.cdt.ui.text.templates.custom=<?xml version\="1.0" encoding\="UTF-8" standalone\="no"?><templates/>
+/instance/org.eclipse.cdt.ui/c_braces=216,216,216
+/instance/org.eclipse.cdt.ui/semanticHighlighting.class.color=210,82,82
+/instance/org.eclipse.cdt.ui/semanticHighlighting.method.color=255,255,255
+/instance/org.eclipse.cdt.ui/pp_header=255,198,0
+/instance/org.eclipse.cdt.core/indexer/skipReferences=false
+/instance/org.eclipse.cdt.ui/semanticHighlighting.localVariable.color=121,171,255
+/instance/org.eclipse.cdt.ui/c_default=248,225,170
+/instance/org.eclipse.cdt.core/indexer/indexUnusedHeadersWithDefaultLang=true
+/instance/org.eclipse.cdt.core/indexer/skipMacroReferences=false
+/instance/org.eclipse.cdt.ui/c_single_line_comment=199,221,12
+/instance/org.eclipse.cdt.ui/semanticHighlighting.staticField.color=239,192,144
+/instance/org.eclipse.cdt.ui/semanticHighlighting.methodDeclaration.color=190,214,255
+/instance/org.eclipse.cdt.ui/asm_directive=255,255,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.parameterVariable.color=121,171,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.functionDeclaration.color=190,214,255
+/instance/org.eclipse.cdt.core/indexer/indexAllFiles=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.macroDefinition.color=190,214,255
+/instance/org.eclipse.cdt.ui/semanticHighlighting.enum.italic=true
+/instance/org.eclipse.cdt.core/indexer/indexerId=org.eclipse.cdt.core.fastIndexer
+/instance/org.eclipse.cdt.core/indexer/skipIncludedFilesLargerThanMB=16
+
+/instance/org.eclipse.cdt.ui/semanticHighlighting.parameterVariable.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.method.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.namespace.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.function.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.macroDefinition.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.localVariableDeclaration.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.enum.enabled=true
+/instance/org.eclipse.cdt.ui/semanticHighlighting.localVariable.enabled=true

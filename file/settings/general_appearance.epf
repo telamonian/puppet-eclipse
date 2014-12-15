@@ -1,0 +1,8 @@
+# @title general_appearance
+# @description general appearance
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 20:08:13 EDT 2014
+file_export_version=3.0
+/instance/org.eclipse.e4.ui.css.swt.theme/themeid=com.github.eclipseuitheme.themes.moonrise-ui

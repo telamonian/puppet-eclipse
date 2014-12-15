@@ -1,0 +1,19 @@
+# @title general_appearance_colorsandfonts-git-colors
+# @description general appearance colorsandfonts-git-colors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffAddBackgroundColor=11,121,90
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffAddForegroundColor=165,201,192
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffHeadlineBackgroundColor=71,71,71
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffHeadlineForegroundColor=181,214,253
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffHunkBackgroundColor=53,97,113
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffHunkForegroundColor=233,242,254
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffRemoveBackgroundColor=117,2,36
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.DiffRemoveForegroundColor=255,232,237
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.IgnoredResourceBackgroundColor=42,42,42
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.IgnoredResourceForegroundColor=120,120,120
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.UncommittedChangeBackgroundColor=42,42,42
+/instance/org.eclipse.ui.workbench/org.eclipse.egit.ui.UncommittedChangeForegroundColor=114,157,186
+file_export_version=3.0

@@ -1,0 +1,12 @@
+# @title general_appearance_colorsandfonts-java-colors
+# @description general appearance colorsandfonts-java-colors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/org.eclipse.jdt.ui.ColoredLabels.match_highlight=206,204,247
+/instance/org.eclipse.ui.workbench/org.eclipse.jdt.ui.ColoredLabels.writeaccess_highlight=240,216,168
+/instance/org.eclipse.ui.workbench/org.eclipse.jdt.ui.DeclarationView.backgroundColor=250,251,197
+/instance/org.eclipse.ui.workbench/org.eclipse.jdt.ui.ColoredLabels.inherited=0,0,128
+/instance/org.eclipse.ui.workbench/org.eclipse.jdt.ui.JavadocView.backgroundColor=250,251,197
+file_export_version=3.0

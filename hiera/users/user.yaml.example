@@ -1,10 +1,6 @@
 ---
 # this file gives an example of how you can set up multiple eclipse installs using a .yaml file
 # rename this file to <your-user-name>.yaml and stick it in your own boxen repo in the <your-repo>/hiera/users directory
-eclipse::workspace_mechanic_info:
-  workspace_mechanic:
-    plugin_name: com.google.eclipse.mechanic
-    repo: http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanics
 
 eclipse::eclipse_installs:
   eclipse_wo_plugins_info:

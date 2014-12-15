@@ -1,0 +1,15 @@
+# @title general_appearance_colorsandfonts-basic-fonts
+# @description general appearance colorsandfonts-basic-fonts
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+# /instance/org.eclipse.ui.workbench/ColorsAndFontsPreferencePage.selectedElement=Forg.eclipse.ui.workbench.texteditor.blockSelectionModeFont
+/instance/org.eclipse.ui.workbench/org.eclipse.jface.bannerfont=1|Lucida Grande|12.0|1|COCOA|1|LucidaGrande-Bold;
+/instance/org.eclipse.ui.workbench/org.eclipse.jface.headerfont=1|Lucida Grande|14.0|1|COCOA|1|LucidaGrande-Bold;
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.texteditor.blockSelectionModeFont=1|Consolas|16.0|0|COCOA|1|Consolas;
+/instance/org.eclipse.ui.workbench/org.eclipse.jface.textfont=1|Consolas|16.0|0|COCOA|1|Consolas;
+/instance/org.eclipse.jdt.ui/org.eclipse.jface.textfont=1|Consolas|16.0|0|COCOA|1|Consolas;
+file_export_version=3.0
+
+

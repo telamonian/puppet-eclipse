@@ -1,0 +1,8 @@
+# @title general_appearance_colorsandfonts-wikitext-fonts
+# @description general appearance colorsandfonts-wikitext-fonts
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.wikitext.ui.presentation.monospaceFont=1|Inconsolata|14.0|0|COCOA|1|Inconsolata;
+file_export_version=3.0

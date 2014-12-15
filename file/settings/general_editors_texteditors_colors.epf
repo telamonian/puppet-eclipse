@@ -1,0 +1,25 @@
+# @title general_editors_texteditors_colors
+# @description general_editors_texteditors_colors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Dec 14 16:07:08 EST 2014
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.SelectionForeground=14,58,77
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.SelectionForeground.SystemDefault=false
+/instance/org.eclipse.ui.editors/lineNumberColor=98,98,98
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.SelectionBackground=66,85,106
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.SelectionBackground.SystemDefault=false
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.FindScope=30,120,155
+/instance/org.eclipse.ui.editors/currentLineColor=0,0,0
+file_export_version=3.0
+/instance/org.eclipse.ui.editors/hyperlinkColor=102,175,249
+/instance/org.eclipse.ui.editors/hyperlinkColor.SystemDefault=false
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.Foreground=32,32,32
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.Foreground.SystemDefault=false
+/instance/org.eclipse.ui.editors/printMarginColor=98,98,98
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.Background=32,32,32
+/instance/org.eclipse.ui.editors/AbstractTextEditor.Color.Background.SystemDefault=false
+
+
+
+

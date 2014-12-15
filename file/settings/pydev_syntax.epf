@@ -1,0 +1,35 @@
+# @title pydev_syntax
+# @description pydev_syntax
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 23:51:09 EDT 2014
+/instance/org.python.pydev/CODE_COLOR=224,226,228
+/instance/org.python.pydev/CODE_STYLE=0
+/instance/org.python.pydev/DECORATOR_COLOR=203,74,23
+/instance/org.python.pydev/DECORATOR_STYLE=0
+/instance/org.python.pydev/NUMBER_COLOR=42,161,152
+/instance/org.python.pydev/NUMBER_STYLE=0
+/instance/org.python.pydev/EDITOR_MATCHING_BRACKETS_COLOR=64,128,128
+/instance/org.python.pydev/EDITOR_MATCHING_BRACKETS_STYLE=0
+/instance/org.python.pydev/KEYWORD_COLOR=181,137,29
+/instance/org.python.pydev/KEYWORD_STYLE=0
+/instance/org.python.pydev/SELF_COLOR=224,226,228
+/instance/org.python.pydev/SELF_STYLE=3
+/instance/org.python.pydev/STRING_COLOR=42,161,152
+/instance/org.python.pydev/STRING_STYLE=2
+/instance/org.python.pydev/DOCSTRING_MARKUP_COLOR=0,170,0
+/instance/org.python.pydev/DOCSTRING_MARKUP_STYLE=1
+/instance/org.python.pydev/COMMENT_COLOR=117,134,153
+/instance/org.python.pydev/COMMENT_STYLE=0
+/instance/org.python.pydev/BACKQUOTES_COLOR=220,50,47
+/instance/org.python.pydev/BACKQUOTES_STYLE=1
+/instance/org.python.pydev/CLASS_NAME_COLOR=38,139,210
+/instance/org.python.pydev/CLASS_NAME_STYLE=1
+/instance/org.python.pydev/FUNC_NAME_COLOR=38,139,210
+/instance/org.python.pydev/FUNC_NAME_STYLE=1
+/instance/org.python.pydev/PARENS_COLOR=146,106,19
+/instance/org.python.pydev/PARENS_STYLE=1
+/instance/org.python.pydev/OPERATORS_COLOR=181,137,29
+/instance/org.python.pydev/OPERATORS_STYLE=0
+file_export_version=3.0

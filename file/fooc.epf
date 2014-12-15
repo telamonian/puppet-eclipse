@@ -1,0 +1,25 @@
+# @title fooc
+# @description fooc
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Mon Sep 01 13:29:50 EDT 2014
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.keyword=127,0,85
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.macro_def=78,118,214
+/bundle_defaults/org.eclipse.cdt.make.ui/editor_folding_default_rule=true
+/bundle_defaults/org.eclipse.cdt.make.ui/editor_folding_default_conditional=true
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.comment=63,127,95
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.macro_def_bold=true
+/bundle_defaults/org.eclipse.cdt.make.ui/editor_folding_default_macrodef=false
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.function_bold=true
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.keyword_bold=true
+/instance/org.eclipse.e4.ui.css.swt.theme/themeid=com.github.eclipseuitheme.themes.moonrise-ui
+/bundle_defaults/org.eclipse.cdt.make.ui/editor_matching_brackets=true
+/bundle_defaults/org.eclipse.cdt.make.ui/MakeTargetPrefs.buildLastTarget=MakeTargetPrefs.buildLastTarget.project
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.macro_ref=0,0,192
+/bundle_defaults/org.eclipse.cdt.make.ui/MakeTargetPrefs.buildTargetInBackground=true
+/bundle_defaults/org.eclipse.cdt.make.ui/editor_folding_enabled=false
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.default=0,0,0
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.function=208,15,63
+file_export_version=3.0
+/bundle_defaults/org.eclipse.cdt.make.ui/org.eclipse.cdt.make.ui.editor.matching.brackets.color=170,170,170

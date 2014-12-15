@@ -1,0 +1,11 @@
+# @title general_appearance_colorsandfonts-textcompare-colors
+# @description general appearance colorsandfonts-textcompare-colors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/CONFLICTING_COLOR=255,0,0
+/instance/org.eclipse.ui.workbench/INCOMING_COLOR=0,0,255
+/instance/org.eclipse.ui.workbench/OUTGOING_COLOR=0,0,0
+/instance/org.eclipse.ui.workbench/RESOLVED_COLOR=0,255,0
+file_export_version=3.0

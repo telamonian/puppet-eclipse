@@ -1,0 +1,13 @@
+# @title foob
+# @description foob
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Mon Sep 01 12:58:50 EDT 2014
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorTextStyle=DASHED_BOX
+file_export_version=3.0
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorInVerticalRuler=false
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.isOverrideIndicatorGoToNextNavigationTarget=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorInOverviewRuler=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicator=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorColor=96,114,112

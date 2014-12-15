@@ -6,7 +6,7 @@
 define eclipse::install ($eclipse_dir, $eclipse_app_src, $plugin_info=undef) {
   
   exec { "fix_permissions_${eclipse_dir}":
-    command     => "chown -R ${::boxen_user}:${boxen::config::group} ${eclipse_dir}",
+    command     => "chown -R ${::boxen_user}:${::boxen_group} ${eclipse_dir}",
     logoutput   => 'on_failure',
     refreshonly => true,
     user        => root,

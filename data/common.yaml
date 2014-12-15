@@ -1,8 +1,8 @@
 ---
 eclipse::workspace_mechanic_info:
   workspace_mechanic:
-    plugin_name: com.google.eclipse.mechanic
-    repo: http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanics
+    plugin_name: com.google.eclipse.mechanic/0.4.0
+    repo: http://workspacemechanic.eclipselabs.org.codespot.com/git.update/mechanic
 
 eclipse::eclipse_default_install:
   eclipse_default_info:

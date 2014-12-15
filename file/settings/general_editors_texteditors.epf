@@ -1,0 +1,8 @@
+# @title general_editors_texteditors
+# @description general_editors_texteditors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Dec 14 19:59:48 EST 2014
+file_export_version=3.0
+/instance/org.eclipse.ui.editors/show_range_indicator=false

@@ -1,0 +1,33 @@
+# @title general_editors_texteditors_annotations-cpp
+# @description general editors texteditors annotations-cpp
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Mon Sep 01 01:47:37 EDT 2014
+/instance/org.eclipse.ui.editors/indexResultIndicationInVerticalRuler=false
+/instance/org.eclipse.ui.editors/indexResultIndicationInOverviewRuler=false
+/instance/org.eclipse.ui.editors/indexResultIndication=false
+/instance/org.eclipse.ui.editors/indexResultIndicationColor=234,137,7
+/instance/org.eclipse.ui.editors/isIndexResultGoToNextNavigationTarget=true
+
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.occurrenceIndicationInVerticalRuler=false
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.occurrenceIndicationInOverviewRuler=false
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.occurrenceIndication=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.occurrenceIndicationTextStyle=DASHED_BOX
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.occurrenceIndicationColor=202,202,202
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.isOccurrenceGoToNextNavigationTarget=false
+
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorInVerticalRuler=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorInOverviewRuler=false
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicator=false
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorTextStyle=DASHED_BOX
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.overrideIndicatorColor=166,197,194
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.isOverrideIndicatorGoToNextNavigationTarget=false
+
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.writeOccurrenceIndicationInVerticalRuler=false
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.writeOccurrenceIndicationInOverviewRuler=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.writeOccurrenceIndication=true
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.writeOccurrenceIndicationTextStyle=DASHED_BOX
+/instance/org.eclipse.ui.editors/org.eclipse.cdt.ui.writeOccurrenceIndicationColor=235,209,151
+
+file_export_version=3.0

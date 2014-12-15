@@ -1,0 +1,26 @@
+# @title general_appearance_colorsandfonts-viewandeditorfolders-colors
+# @description general appearance colorsandfonts-viewandeditorfolders-colors
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_START=229,229,229
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_BG_END=212,212,212
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_NOFOCUS_TAB_TEXT_COLOR=127,127,127
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_BG_START=220,230,248
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_BG_END=115,158,227
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_TEXT_COLOR=0,0,0
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_INNER_KEYLINE_COLOR=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_OUTER_KEYLINE_COLOR=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_TAB_OUTLINE_COLOR=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_UNSELECTED_TABS_COLOR_START=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.ACTIVE_UNSELECTED_TABS_COLOR_END=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_BG_START=255,255,255
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_BG_END=232,232,232
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_TEXT_COLOR=0,0,0
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_INNER_KEYLINE_COLOR=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_OUTER_KEYLINE_COLOR=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_TAB_OUTLINE_COLOR=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_UNSELECTED_TABS_COLOR_END=0,1,2
+/instance/org.eclipse.ui.workbench/org.eclipse.ui.workbench.INACTIVE_UNSELECTED_TABS_COLOR_START=0,1,2
+file_export_version=3.0

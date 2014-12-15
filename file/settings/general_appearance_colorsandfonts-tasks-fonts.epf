@@ -1,0 +1,9 @@
+# @title general_appearance_colorsandfonts-tasks-fonts
+# @description general appearance colorsandfonts-tasks-fonts
+# @task_type LASTMOD
+#
+# Created by the Workspace Mechanic Preference Recorder
+#Sun Aug 31 13:11:21 EDT 2014
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.wikitext.tasks.ui.monospaceFont=1|Inconsolata|14.0|0|COCOA|1|Inconsolata;
+/instance/org.eclipse.ui.workbench/org.eclipse.mylyn.tasks.ui.fonts.task.editor.comment=1|Lucida Grande|11.0|0|COCOA|1|LucidaGrande;
+file_export_version=3.0
